@@ -1,0 +1,12 @@
+if [[ "$1" == "" ]]; then
+    echo "missing repository name"
+    exit 1
+fi
+REPO="$1"
+
+set -e
+
+git remote add -f ${REPO} git@github.com:Shopximity/${REPO}.git
+git merge -s ours --no-commit ${REPO}/master
+git read-tree --prefix=${REPO}/ -u ${REPO}/master
+git commit -m "merge ${REPO} into subdirectory"
