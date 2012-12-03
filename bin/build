@@ -1,0 +1,31 @@
+#!/bin/sh
+
+OWD=$PWD
+
+while [ ! -f build.xml -a ! -f pom.xml -a ! -f Makefile ]; do
+	WD=$PWD
+	cd ..
+	if [ $WD == $PWD ]; then
+	    cd $OWD
+		break
+	fi
+done
+
+if [ -f pom.xml ]; then
+	echo "Running mvn in $PWD"
+	ONE=$1
+	TWO=$2
+	if [ "$ONE" == "" ]; then
+		ONE="-o"
+		TWO="test"
+	fi
+	mvn $ONE $TWO $3 $4 $5
+elif [ -f build.xml ]; then
+	echo "Running ant in $PWD"
+	ant $1 $2 $3 $4 $5
+elif [ -f Makefile ]; then
+	echo "Running make in $PWD"
+	make $1 $2 $3 $4 $5
+else
+	echo "No build file found"
+fi
