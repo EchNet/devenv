@@ -1,12 +1,11 @@
-LOCAL_PATH="$HOME/dev/wf/bin:$HOME/local/bin:$HOME/local/mongodb/bin:/usr/local/bin:/usr/local/mysql/bin"
+LOCAL_PATH="$HOME/dev/wf/bin:$HOME/local/bin:$HOME/local/mongodb/bin:/usr/local/bin:/usr/local/git/bin"
 export PATH="$LOCAL_PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin"
 export NODE_PATH="$HOME/local/node:$HOME/local/node/lib/node_modules"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 [[ -s "$HOME/.git-completion.sh" ]] && . "$HOME/.git-completion.sh" 
 
-# export PS1="\[\e]0;\u@\h: \w\a\]\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ "
-export PS1='[\u@\h:\W$(__git_ps1 "(%s)")]\$ '
+export PS1='\[\033[01;34m\][\u@\h:\W$(__git_ps1 "(%s)")]\[\033[00m\]\$ '
 export PS2="> "
 
 # EC2 stuff.
