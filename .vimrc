@@ -6,6 +6,8 @@ set autowrite
 set nofoldenable
 let g:loaded_matchparen=1
 syntax on
+filetype on
+au BufNewFile,BufRead *.json set filetype=javascript
 
 
 " Vim color file
