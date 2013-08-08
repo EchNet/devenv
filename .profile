@@ -36,3 +36,9 @@ alias vulcan="ssh -i $ARDRONE_KEY $VULCAN"
 
 alias bc="build clean cobertura:cobertura"
 alias words="pushd ~/8svn/dev/modules/anagram/words/src"
+
+function c() {
+	NWD=`echo $PWD | sed "s^src\\/[a-z]*\\/^src\\/$1\\/^" `
+	echo $NWD
+	cd $NWD
+}
