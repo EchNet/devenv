@@ -5,7 +5,7 @@ export NODE_PATH="$HOME/local/node:$HOME/local/node/lib/node_modules"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 [[ -s "$HOME/.git-completion.sh" ]] && . "$HOME/.git-completion.sh" 
 
-export PS1='\[\033[01;34m\][\u@\h:\W$(__git_ps1 "(%s)")]\[\033[00m\]\$ '
+export PS1='\[\033[01;34m\][\W$(__git_ps1 "(%s)")]\[\033[00m\] \$ '
 export PS2="> "
 
 # EC2 stuff.
@@ -35,7 +35,6 @@ alias ci="ssh -i $CI_KEY $CI"
 alias vulcan="ssh -i $ARDRONE_KEY $VULCAN"
 
 alias bc="build clean cobertura:cobertura"
-alias words="pushd ~/8svn/dev/modules/anagram/words/src"
 
 function c() {
 	NWD=`echo $PWD | sed "s^src\\/[a-z]*\\/^src\\/$1\\/^" `
