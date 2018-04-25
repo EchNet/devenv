@@ -1,6 +1,5 @@
-set shiftwidth=4
-set tabstop=4
-set noexpandtab
+set shiftwidth=2
+set expandtab
 set autoindent
 set autowrite
 set nofoldenable
@@ -8,6 +7,7 @@ let g:loaded_matchparen=1
 syntax on
 filetype on
 au BufNewFile,BufRead *.json set filetype=javascript
+autocmd bufwritepost *.py !yapf -i %
 
 
 " Vim color file
