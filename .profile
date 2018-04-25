@@ -1,4 +1,4 @@
-LOCAL_PATH="$HOME/bin:/usr/local/bin"
+LOCAL_PATH="$HOME/bin:/usr/local/bin:/usr/local/mysql/bin"
 export PATH="$LOCAL_PATH:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
@@ -22,3 +22,6 @@ cdfunction() {
 }
 
 export PROMPT_COMMAND=cdfunction
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
