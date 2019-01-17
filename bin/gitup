@@ -1,0 +1,16 @@
+#!/bin/bash
+
+git checkout master || ( echo "Git checkout failed. Exiting"; exit 1 )
+git pull origin master || ( echo "Git pull failed. Exiting"; exit 1 )
+BRANCHES=$(git branch | grep -v '^\* ')
+for branch in $BRANCHES; do
+  echo Rebasing $branch...
+  git checkout $branch > /dev/null
+  git rebase master || ( echo "Rebase failed. Exiting"; exit 1 )
+  git checkout master
+  if [ $(git diff --numstat $branch | wc -l) == "0" ]; then
+    echo "No diffs.  Deleting."
+    git branch -d $branch || ( echo "Delete failed. Exiting"; exit 1 )
+  fi
+done
+echo "Done"
