@@ -15,9 +15,11 @@ alias primus="ssh -i $PRIMUS_KEY $PRIMUS"
 cdfunction() {
   if [ "$PWD" != "$MYOLDPWD" ]; then
     MYOLDPWD="$PWD"
-    if [ -f ./devsetup ]; then
-      source ./devsetup
-    fi
+    for ss in devsetup env/bin/activate; do
+      if [ -f ./$ss ]; then
+        source ./$ss
+      fi
+    done
   fi
 }
 
