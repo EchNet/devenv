@@ -1,3 +1,4 @@
+set backupcopy=yes
 set shiftwidth=2
 set expandtab
 set autoindent
