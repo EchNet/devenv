@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ssh -i ~/Dropbox/Work/friendwitha/bb root@52.88.106.197 -p6472 -t '. /etc/profile; . ~/.profile; cd /srv/www/friendwitha; . env/bin/activate; bash'
