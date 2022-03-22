@@ -1,5 +1,6 @@
 LOCAL_PATH="$HOME/bin:/usr/local/bin"
 export PATH="$LOCAL_PATH:/usr/bin:/bin:/usr/sbin:/usr/local/sbin:/sbin:/usr/X11/bin"
+export PATH="/Users/ech/.ebcli-virtual-env/executables:$PATH"
 
 [[ -s "$HOME/.git-completion.sh" ]] && . "$HOME/.git-completion.sh" 
 
@@ -30,7 +31,7 @@ if [ -f '/Users/ech/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/ech/
 # pyenv
 export PATH="/Users/ech/.pyenv/shims:${PATH}"
 export PYENV_SHELL=bash
-source '/usr/local/Cellar/pyenv/1.2.21/libexec/../completions/pyenv.bash'
+source '/usr/local/Cellar/pyenv/2.0.4/libexec/../completions/pyenv.bash'
 command pyenv rehash 2>/dev/null
 pyenv() {
   local command
