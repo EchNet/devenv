@@ -1,6 +1,4 @@
-LOCAL_PATH="$HOME/bin:/usr/local/bin"
-export PATH="$LOCAL_PATH:/usr/bin:/bin:/usr/sbin:/usr/local/sbin:/sbin:/usr/X11/bin"
-export PATH="/Users/ech/.ebcli-virtual-env/executables:$PATH"
+export PATH="$HOME/bin:/usr/local/bin:/usr/local/homebrew/bin:/usr/local/opt/postgresql@17/bin:/usr/bin:/bin:/usr/sbin:/usr/local/sbin:/sbin:/usr/X11/bin"
 
 [[ -s "$HOME/.git-completion.sh" ]] && . "$HOME/.git-completion.sh" 
 
@@ -10,13 +8,20 @@ export PS2="> "
 cdfunction() {
   if [ "$PWD" != "$MYOLDPWD" ]; then
     MYOLDPWD="$PWD"
-    for ss in devsetup env/bin/activate venv/bin/activate; do
+    for ss in devsetup venv/bin/activate .venv/bin/activate; do
       if [ -f ./$ss ]; then
         source ./$ss
       fi
     done
   fi
 }
+
+gdsspw() {
+  echo "jdK3+o3m" | pbcopy
+}
+
+# Homebrew
+export HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK=1
 
 export PROMPT_COMMAND=cdfunction
 
@@ -31,7 +36,7 @@ if [ -f '/Users/ech/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/ech/
 # pyenv
 export PATH="/Users/ech/.pyenv/shims:${PATH}"
 export PYENV_SHELL=bash
-source '/usr/local/Cellar/pyenv/2.0.4/libexec/../completions/pyenv.bash'
+source '/usr/local/Cellar/pyenv/2.5.2/libexec/../completions/pyenv.bash'
 command pyenv rehash 2>/dev/null
 pyenv() {
   local command
@@ -47,3 +52,6 @@ pyenv() {
     command pyenv "$command" "$@";;
   esac
 }
+
+export PATH="${PATH}:./node_modules/.bin"
+
