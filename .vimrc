@@ -8,8 +8,18 @@ let g:loaded_matchparen=1
 syntax on
 filetype on
 au BufNewFile,BufRead *.json set filetype=javascript
-autocmd bufwritepost *.py !yapf -i %
 
+function! RunYapfIfConfigured()
+    if filereadable(findfile(".style.yapf", expand("%:p:h") . ";"))
+        execute "silent !yapf -i " . shellescape(expand("%:p"))
+        edit
+    endif
+endfunction
+
+augroup PythonYapf
+    autocmd!
+    autocmd BufWritePost *.py call RunYapfIfConfigured()
+augroup END
 
 " Vim color file
 " Maintainer:	Jens Frederich <jfrederich@gmail.com>
